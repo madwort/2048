@@ -43,11 +43,73 @@ GameManager.prototype.setup = function () {
   this.keepPlaying = false;
 
   // Add the initial tiles
-  this.addStartTiles();
+  // this.addStartTiles();
+  this.addGivenGameState();
 
   // Update the actuator
   this.actuate();
 };
+
+// Set up the initial tiles to start the game with
+GameManager.prototype.addGivenGameState = function () {
+   
+   // Don't stop when you hit a 2048 tile
+   this.keepPlaying = true;
+   
+   var tile;
+   
+   // console.log("Madwort's saved game");
+   // tile = new Tile({ x: 0, y: 1 },2);
+   // this.grid.insertTile(tile);
+   // tile = new Tile({ x: 1, y: 0 },64);
+   // this.grid.insertTile(tile);
+   // tile = new Tile({ x: 2, y: 0 },1024);
+   // this.grid.insertTile(tile);
+   // tile = new Tile({ x: 2, y: 1 },16);
+   // this.grid.insertTile(tile);
+   // tile = new Tile({ x: 2, y: 2 },8);
+   // this.grid.insertTile(tile);
+   // tile = new Tile({ x: 3, y: 0 },1024);
+   // this.grid.insertTile(tile);
+   // tile = new Tile({ x: 3, y: 1 },16);
+   // this.grid.insertTile(tile);
+   // tile = new Tile({ x: 3, y: 2 },16);
+   // this.grid.insertTile(tile);
+   // tile = new Tile({ x: 3, y: 3 },2);
+   // this.grid.insertTile(tile);
+
+   console.log("Experimental maximum...");
+   tile = new Tile({ x: 0, y: 0 },2);
+   this.grid.insertTile(tile);
+   tile = new Tile({ x: 1, y: 0 },128);
+   this.grid.insertTile(tile);
+   tile = new Tile({ x: 1, y: 1 },64);
+   this.grid.insertTile(tile);
+   tile = new Tile({ x: 1, y: 2 },32);
+   this.grid.insertTile(tile);
+   tile = new Tile({ x: 1, y: 3 },2);
+   this.grid.insertTile(tile);
+   tile = new Tile({ x: 2, y: 0 },256);
+   this.grid.insertTile(tile);
+   tile = new Tile({ x: 2, y: 1 },512);
+   this.grid.insertTile(tile);
+   tile = new Tile({ x: 2, y: 2 },1024);
+   this.grid.insertTile(tile);
+   tile = new Tile({ x: 2, y: 3 },2048);
+   this.grid.insertTile(tile);
+   tile = new Tile({ x: 3, y: 0 },32768);
+   this.grid.insertTile(tile);
+   tile = new Tile({ x: 3, y: 1 },16384);
+   this.grid.insertTile(tile);
+   tile = new Tile({ x: 3, y: 2 },8192);
+   this.grid.insertTile(tile);
+   tile = new Tile({ x: 3, y: 3 },4096);
+   this.grid.insertTile(tile);
+
+
+
+};
+
 
 // Set up the initial tiles to start the game with
 GameManager.prototype.addStartTiles = function () {
@@ -61,7 +123,6 @@ GameManager.prototype.addRandomTile = function () {
   if (this.grid.cellsAvailable()) {
     var value = Math.random() < 0.9 ? 2 : 4;
     var tile = new Tile(this.grid.randomAvailableCell(), value);
-
     this.grid.insertTile(tile);
   }
 };
